@@ -54,6 +54,7 @@ Oracle NetSuite: SHORT_NAME.app.netsuite.com
 Oracle Taleo: SHORT_NAME.taleo.net
 PagerDuty: SHORT_NAME.pagerduty.com
 Palo Alto Networks Cortex XDR: SHORT_NAME.xdr.us.paloaltonetworks.com
+Palo Alto Networks Cortex XDR Canada: SHORT_NAME.xdr.ca.paloaltonetworks.com
 Ping Identity: SHORT_NAME.pingidentity.com
 Proofpoint: SHORT_NAME.proofpoint.com
 Proofpoint (Cloud Security): SHORT_NAME.access.proofpoint.com
@@ -136,3 +137,15 @@ Broadcom CloudSOC CASB: SHORT_NAME.elastica.net
 GitHub Codespaces: SHORT_NAME.github.dev
 VMware Cloud (AWS Integration): SHORT_NAME.vmwarevmc.com
 Slack Status: SHORT_NAME.slackstatus.com
+UltiPro HR: SHORT_NAME.ultipro.com
+Melon Travel: SHORT_NAME.melon.travel
+Lattice: SHORT_NAME.latticehq.com
+Looker Cloud: SHORT_NAME.cloud.looker.com
+TestRail: SHORT_NAME.testrail.com
+1Password: SHORT_NAME.1password.com
+LastPass: SHORT_NAME.lastpass.com
+Anaqua: SHORT_NAME.anaqua.com
+Sentry: SHORT_NAME.sentry.io
+EasyVista: SHORT_NAME.easyvista.com
+Kandji: SHORT_NAME.kandji.io
+Optimove: SHORT_NAME.optimove.net
