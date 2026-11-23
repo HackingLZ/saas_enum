@@ -12,7 +12,7 @@ from unittest.mock import patch
 import txt_enum
 from modules.txt_dns import TXTResolver, decode_txt, normalize_domain, parse_response
 from modules.txt_matcher import analyze, discover, load_rules, match_query, spf_references
-from modules.txt_storage import save_database
+from modules.txt_storage import save_database, summary
 
 CATALOG = load_rules()
 
@@ -91,6 +91,16 @@ class DNSParsingTests(unittest.TestCase):
         self.assertEqual(request.call_count, 2)
         self.assertEqual(result["status"], "no_data")
 
+    def test_malformed_answer_is_a_failed_query_not_empty_dns(self):
+        for answer in ([None], [{"name": None, "type": 16, "data": "abc"}],
+                       [{"name": "example.com", "type": 5, "data": 42}]):
+            with self.subTest(answer=answer):
+                response = io.BytesIO(json.dumps({"Status": 0, "Answer": answer}).encode())
+                with patch("urllib.request.urlopen", return_value=response):
+                    result = TXTResolver(retries=0).query("example.com")
+                self.assertEqual(result["status"], "error")
+                self.assertIn("Invalid DNS JSON", result["error"])
+
 
 class MatchingTests(unittest.TestCase):
     def test_google_token_is_not_workspace(self):
@@ -148,6 +158,36 @@ class MatchingTests(unittest.TestCase):
 
 
 class ScanTests(unittest.TestCase):
+    def test_upstream_provider_is_labeled_inherited_in_all_exports(self):
+        resolver = FakeResolver({
+            "example.com": query(values=["v=spf1 include:_spf.bridge.example -all"]),
+            "_spf.bridge.example": query("_spf.bridge.example", ["v=spf1 include:sendgrid.net -all"]),
+        })
+        result = txt_enum.scan_domain("example.com", resolver, CATALOG, dmarc=False)
+        service = next(s for s in result["services"] if s["service"] == "Twilio SendGrid")
+        self.assertEqual(service["association"], "inherited")
+        self.assertEqual(service["direct_evidence_count"], 0)
+        self.assertEqual(service["inherited_evidence_count"], 1)
+        self.assertEqual(result["matches"][0]["association"], "inherited")
+        self.assertEqual(summary([result])["direct_company_service_pairs"], 0)
+        self.assertEqual(summary([result])["inherited_only_company_service_pairs"], 1)
+        self.assertIn("inherited via SPF", txt_enum.render([result], {}, "text"))
+        row = next(csv.DictReader(io.StringIO(txt_enum.render([result], {}, "csv"))))
+        self.assertEqual(row["association"], "inherited")
+
+    def test_direct_and_inherited_evidence_are_counted_separately(self):
+        resolver = FakeResolver({
+            "example.com": query(values=["v=spf1 include:sendgrid.net include:_spf.bridge.example -all"]),
+            "_spf.bridge.example": query("_spf.bridge.example", ["v=spf1 include:sendgrid.net -all"]),
+        })
+        result = txt_enum.scan_domain("example.com", resolver, CATALOG, dmarc=False)
+        service = next(s for s in result["services"] if s["service"] == "Twilio SendGrid")
+        self.assertEqual(service["association"], "direct")
+        self.assertEqual(service["direct_evidence_count"], 1)
+        self.assertEqual(service["inherited_evidence_count"], 1)
+        self.assertEqual(summary([result])["direct_company_service_pairs"], 1)
+        self.assertEqual(summary([result])["inherited_only_company_service_pairs"], 0)
+
     def test_spf_cycle_and_provenance(self):
         resolver = FakeResolver({
             "example.com": query(values=["v=spf1 include:_spf.example.com -all"]),
@@ -183,13 +223,24 @@ class ScanTests(unittest.TestCase):
 
 
 class OutputTests(unittest.TestCase):
+    def test_conflicting_output_paths_fail_before_dns_and_preserve_files(self):
+        with tempfile.TemporaryDirectory() as folder:
+            output = Path(folder) / "existing.json"
+            output.write_text("keep this file")
+            with patch("modules.txt_dns.TXTResolver.query") as request, \
+                 contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as caught:
+                txt_enum.main(["--domain", "example.com", "--output", str(output), "--raw-output", str(output)])
+            self.assertEqual(caught.exception.code, 2)
+            request.assert_not_called()
+            self.assertEqual(output.read_text(), "keep this file")
+
     def test_sqlite_history_and_record_links(self):
         result = txt_enum.scan_domain("example.com", FakeResolver({"example.com": query(values=["stripe-verification=abc"])}), CATALOG, dmarc=False)
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / "mapping.sqlite"
             for _ in range(2):
                 save_database(path, [result], {"created_at": "fixture"})
-            with sqlite3.connect(path) as db:
+            with contextlib.closing(sqlite3.connect(path)) as db, db:
                 self.assertEqual(db.execute("select count(*) from runs").fetchone()[0], 2)
                 self.assertEqual(db.execute("select value from matches join records on records.id=matches.record_id").fetchall(), [("stripe-verification=abc",)] * 2)
                 self.assertEqual(db.execute("PRAGMA foreign_key_check").fetchall(), [])
@@ -216,7 +267,7 @@ class OutputTests(unittest.TestCase):
                       collection_method="@SUM(1,1)")
         rows = list(csv.reader(io.StringIO(txt_enum.render([result], {}, "csv"))))
         self.assertEqual(len(rows), 2)
-        self.assertEqual(rows[1], ["'=1+1", "'+1", "", "", "", "", "", "", "", "", "'-1+1", "'@SUM(1,1)"])
+        self.assertEqual(rows[1], ["'=1+1", "'+1", "", "", "", "", "", "", "", "", "'-1+1", "'@SUM(1,1)", ""])
         # Escaping belongs only in CSV, so JSON evidence keeps its original values.
         exported = json.loads(txt_enum.render([result], {}, "json"))["results"][0]
         self.assertEqual(exported["domain"], "=1+1")

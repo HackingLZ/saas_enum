@@ -113,6 +113,7 @@ def match_query(query, catalog):
                     "query_name": query["query_name"], "record_index": index,
                     "owner": record["owner"], "value": record["value"],
                     "matched": matched, "scope": scope,
+                    "association": "inherited" if scope == "spf" else "direct",
                     "via": query.get("via", []), "fetched_at": query["fetched_at"],
                     "sources": rule["sources"], "basis": rule["basis"],
                     "observation_sources_withheld": rule.get("observation_sources_withheld", False),
@@ -131,6 +132,9 @@ def analyze(result, catalog):
     result["services"] = [{"service": name, "category": ms[0]["category"],
                            "confidence": "high" if any(m["confidence"] == "high" for m in ms) else "medium",
                            "signals": sorted({m["signal"] for m in ms}),
+                           "association": "direct" if any(m["association"] == "direct" for m in ms) else "inherited",
+                           "direct_evidence_count": sum(m["association"] == "direct" for m in ms),
+                           "inherited_evidence_count": sum(m["association"] == "inherited" for m in ms),
                            "evidence_count": len(ms)} for name, ms in sorted(services.items())]
     return result
 

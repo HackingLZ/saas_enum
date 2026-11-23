@@ -1,4 +1,5 @@
 import copy
+from contextlib import closing
 import hashlib
 import json
 from pathlib import Path
@@ -17,7 +18,7 @@ class CatalogDatabaseTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             output = Path(folder) / "data" / "rules.sqlite"
             self.assertEqual(build_database(DEFAULT_RULES, output), len(catalog["rules"]))
-            with sqlite3.connect(output) as db:
+            with closing(sqlite3.connect(output)) as db, db:
                 rules = [json.loads(row[0]) for row in db.execute(
                     "SELECT rule_json FROM fingerprints ORDER BY rule_id")]
                 self.assertEqual(rules, sorted(catalog["rules"], key=lambda r: r["id"]))
@@ -31,7 +32,7 @@ class CatalogDatabaseTests(unittest.TestCase):
     def test_existing_database_is_preserved(self):
         with tempfile.TemporaryDirectory() as folder:
             output = Path(folder) / "existing.sqlite"
-            with sqlite3.connect(output) as db:
+            with closing(sqlite3.connect(output)) as db, db:
                 db.execute("CREATE TABLE local_results (value TEXT)")
                 db.execute("INSERT INTO local_results VALUES ('keep this result')")
             before = output.read_bytes()

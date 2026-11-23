@@ -111,6 +111,15 @@ verification is labeled as generic Google domain verification because Search Con
 is not automatically labeled Google Workspace. Microsoft domain verification
 and Microsoft 365 email references are separate signals.
 
+Matches include `association: direct` for records at the input name or its DMARC
+owner, and `association: inherited` for records reached through SPF expansion.
+Services found only upstream are labeled "inherited via SPF" in text output;
+CSV includes an `association` column. Service summaries retain separate
+`direct_evidence_count` and `inherited_evidence_count` values. A service with both
+is labeled direct. Summary counts distinguish `direct_company_service_pairs`
+from `inherited_only_company_service_pairs`; `company_service_pairs` includes both.
+See [the accuracy guide](ACCURACY.md) for interpretation across both tools.
+
 Rules anchor verification strings and compare SPF/DMARC domains at DNS label
 boundaries. `sendgrid.net.evil.example` does not match SendGrid. SPF discovery
 does not copy verification markers found on an upstream provider into the
@@ -126,6 +135,7 @@ and 130 for an interrupt. Progress goes to stderr so JSON stdout stays usable.
 Outputs are finalized after collection; an interrupted scan is not checkpointed.
 
 CSV has one row per evidence match and a status row for domains with no matches.
+Conflicting input/output paths are rejected before collecting DNS records.
 Formula-like text is escaped for spreadsheet import. JSON/JSONL retains original
 values. SQLite is append-only per run; no previous run is overwritten.
 

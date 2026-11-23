@@ -58,7 +58,7 @@ python saas_enum.py --list-providers
 - `-c`, `--check-providers`\
   Validate provider patterns for wildcard DNS.
 - `-y`, `--yaml` PATH\
-  Path to the provider definition YAML file (default: `dns_integrations.yaml`).
+  Provider YAML file (defaults to `dns_integrations.yaml` beside the script).
 - `-t`, `--timeout` SECONDS\
   Timeout in seconds for each provider check (default: 20).
 - `-v`, `--verbose`\
@@ -71,6 +71,21 @@ The supporting modules are located in the `modules` directory.
 - DNS-based SaaS provider enumeration
 - Optional HTTP verification of provider pages
 - Batch processing with CSV or JSON reporting
+
+## Interpreting provider results
+
+Provider mode compares candidate tenants against randomized control tenants.
+Shared login redirects, pages that echo any tenant name, and incomplete controls
+remain unconfirmed. Positive results are **corroborated associations**, with
+active use still unverified. See [accuracy checks and result meanings](docs/ACCURACY.md).
+
+Custom `--yaml` files apply to single and batch scans. Provider selections are
+case-insensitive, and unknown selections fail before any checks run.
+
+The provider catalog contains **158 labels / 157 distinct hostname templates**.
+The [20 newly documented additions](docs/PROVIDERS.md) include Retool, Grafana
+Cloud, Personio, Tines, and 1Password. Each addition has official source links
+and notes about tenant naming and the type of site it identifies.
 
 ## TXT service discovery
 
@@ -125,7 +140,8 @@ python3 saas_enum.py --txt --domain example.com --db output/services.sqlite
 ```
 
 Results describe DNS evidence and vendor attribution, not confirmed active product
-use. Of the bundled rules, 34 link to vendor documentation and 312 are explicitly
+use. Results distinguish direct DNS references from services inherited through
+upstream SPF records. Of the bundled rules, 34 link to vendor documentation and 312 are explicitly
 labeled inferences whose observation sources are withheld. See
 [TXT usage and database queries](docs/TXT.md) and
 [how to curate the catalog](docs/CURATING.md).
@@ -138,8 +154,9 @@ raw observations, reports, and custom catalogs in those local directories. Revie
 `git status --short` and `git diff --cached` before committing; ignore rules do not
 remove files already tracked by Git or prevent a forced add.
 
-The TXT test suite uses synthetic fixtures and runs without a local database or
-collected dataset:
+The test suite uses synthetic fixtures and runs without a local database or
+collected dataset. Install `requirements.txt` to test both modes; without those
+packages, provider-mode tests are skipped and TXT tests still run:
 
 ```bash
 python3 -m unittest discover -s tests -v

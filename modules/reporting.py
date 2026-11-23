@@ -14,11 +14,12 @@ def display_results(results, short_name, verbose):
     summary.add_column("Category", style="cyan")
     summary.add_column("Count", style="green")
 
-    summary.add_row("Confirmed Integrations", str(confirmed_count))
+    summary.add_row("Corroborated Associations", str(confirmed_count))
     summary.add_row("Possible Integrations", str(possible_count))
     summary.add_row("Total Checked", str(len(results)))
 
     console.print(summary)
+    console.print("[dim]Corroborated associations are evidence of a tenant-specific page, not verified active use.[/dim]")
     console.print()
 
     table = Table(title="Detailed Results")
@@ -31,7 +32,7 @@ def display_results(results, short_name, verbose):
         status = result["status"]
 
         if status in ["confirmed_valid", "confirmed_via_web"]:
-            status_str = "✅ CONFIRMED"
+            status_str = "✅ CORROBORATED"
             status_style = "green"
         elif status == "url_only_match":
             status_str = "🔍 URL ONLY"

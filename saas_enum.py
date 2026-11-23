@@ -12,11 +12,10 @@ import os
 import json
 import logging
 import csv
-import requests
+import yaml
 from datetime import datetime
 from rich.table import Table
 from rich.progress import Progress, SpinnerColumn, TextColumn
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 from modules.dns_utils import (
     load_dns_integrations,
@@ -25,14 +24,22 @@ from modules.dns_utils import (
 )
 from modules.reporting import display_results, console
 
-# Suppress only the single InsecureRequestWarning
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-
 # Set up logging
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
+
+
+def select_providers(integrations, providers):
+    if providers is None:
+        return integrations
+    names = {name.casefold(): name for name in integrations}
+    requested = [name.strip().casefold() for name in providers]
+    unknown = [name for name in requested if name not in names]
+    if not requested or unknown:
+        raise ValueError("Unknown or empty provider selection: " + ", ".join(unknown))
+    return {names[name]: integrations[names[name]] for name in requested}
 
 
 def run_checks(
@@ -44,6 +51,7 @@ def run_checks(
     output_file=None,
     format="text",
     timeout=20,
+    yaml_path=None,
 ):
     """
     Run checks for the given short_name against all or specified providers.
@@ -51,17 +59,9 @@ def run_checks(
     results = []
 
     # Load the DNS integrations
-    DNS_INTEGRATIONS = load_dns_integrations()
+    DNS_INTEGRATIONS = load_dns_integrations(yaml_path)
 
-    # If specific providers are specified, filter the integrations
-    integrations_to_check = DNS_INTEGRATIONS
-    if providers:
-        integrations_to_check = {
-            k: v for k, v in DNS_INTEGRATIONS.items() if k in providers
-        }
-        if not integrations_to_check:
-            console.print("[bold red]Error:[/bold red] No matching providers found.")
-            return []
+    integrations_to_check = select_providers(DNS_INTEGRATIONS, providers)
 
     with Progress(
         SpinnerColumn(),
@@ -271,9 +271,9 @@ def run_checks(
                 )
 
                 f.write(f"Summary:\n")
-                f.write(f"  Confirmed integrations: {confirmed_count}\n")
+                f.write(f"  Corroborated associations: {confirmed_count}\n")
                 f.write(f"  Possible integrations: {possible_count}\n")
-                f.write(f"  Total checked: {len(results)}\n\n")
+                f.write(f"  Total checked: {len(results)}\n  Active service use is not verified.\n\n")
 
                 f.write("Detailed Results:\n")
                 for result in results:
@@ -330,7 +330,7 @@ def run_checks(
     return results
 
 
-def main():
+def main(argv=None):
     parser = argparse.ArgumentParser(
         description="Enhanced SaaS Provider Detection Tool",
         epilog="TXT-only mode: python saas_enum.py --txt --domain example.com (or --txt --help)",
@@ -383,8 +383,8 @@ def main():
     parser.add_argument(
         "-y",
         "--yaml",
-        default="dns_integrations.yaml",
-        help="Path to YAML file with provider definitions",
+        default=None,
+        help="Provider YAML file (defaults to dns_integrations.yaml beside the script)",
     )
     parser.add_argument(
         "-t",
@@ -393,10 +393,15 @@ def main():
         default=20,
         help="Timeout in seconds for each provider check",
     )
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
-    # Load DNS integrations
-    DNS_INTEGRATIONS = load_dns_integrations(args.yaml)
+    # Validate the selected catalog and provider scope before any network requests.
+    try:
+        DNS_INTEGRATIONS = load_dns_integrations(args.yaml)
+        requested = args.providers.split(",") if args.providers is not None else None
+        selected_providers = list(select_providers(DNS_INTEGRATIONS, requested))
+    except (OSError, ValueError, yaml.YAMLError) as exc:
+        parser.error(str(exc))
 
     if args.list_providers:
         console.print("[bold]Available providers:[/bold]")
@@ -436,15 +441,12 @@ def main():
             console.print(f"\n[bold]Checking: {name}[/bold]")
             results = run_checks(
                 short_name=name,
-                providers=(
-                    [p.strip() for p in args.providers.split(",")]
-                    if args.providers
-                    else None
-                ),
+                providers=selected_providers,
                 max_workers=args.workers,
                 output_json=False,
                 verbose=args.verbose,
                 timeout=args.timeout,
+                yaml_path=args.yaml,
             )
             batch_results[name] = results
 
@@ -491,9 +493,9 @@ def main():
                             if r["status"] in ["valid_dns", "dns_only_match"]
                         )
 
-                        f.write(f"  Confirmed integrations: {confirmed_count}\n")
+                        f.write(f"  Corroborated associations: {confirmed_count}\n")
                         f.write(f"  Possible integrations: {possible_count}\n")
-                        f.write(f"  Total checked: {len(results)}\n\n")
+                        f.write(f"  Total checked: {len(results)}\n  Active service use is not verified.\n\n")
 
             console.print(f"[green]Batch results saved to {args.output}[/green]")
 
@@ -502,38 +504,16 @@ def main():
     # Single company check
     if args.input:
         short_name = args.input.strip()
-        providers = None
-
-        if args.providers:
-            input_providers = [p.strip().lower() for p in args.providers.split(",")]
-
-            # Create a case-insensitive mapping of available providers
-            lower_provider_map = {k.lower(): k for k in DNS_INTEGRATIONS}
-
-            unknown = [p for p in input_providers if p not in lower_provider_map]
-            if unknown:
-                console.print(
-                    f"[bold yellow]Warning:[/bold yellow] Unknown providers: {', '.join(unknown)}"
-                )
-                console.print("Use --list-providers to see all available providers.")
-
-            # Filter DNS_INTEGRATIONS with matched original casing
-            matched_providers = [
-                lower_provider_map[p]
-                for p in input_providers
-                if p in lower_provider_map
-            ]
-            providers = matched_providers
-
         run_checks(
             short_name=short_name,
-            providers=providers,
+            providers=selected_providers,
             max_workers=args.workers,
             output_json=args.json,
             verbose=args.verbose,
             output_file=args.output,
             format=args.format,
             timeout=args.timeout,
+            yaml_path=args.yaml,
         )
     else:
         console.print(

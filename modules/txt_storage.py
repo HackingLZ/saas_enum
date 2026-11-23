@@ -1,13 +1,14 @@
 """Append-only scan history in SQLite, and portable exports."""
 
 import json
+from contextlib import closing
 import sqlite3
 from pathlib import Path
 
 
 def save_database(path, results, metadata):
     Path(path).parent.mkdir(parents=True, exist_ok=True)
-    with sqlite3.connect(path) as db:
+    with closing(sqlite3.connect(path)) as db, db:
         db.execute("PRAGMA foreign_keys=ON")
         db.executescript("""
             CREATE TABLE IF NOT EXISTS runs (
@@ -68,6 +69,8 @@ def summary(results):
         "domains_with_errors": sum(r["status"] in ("error", "partial") for r in results),
         "txt_records": sum(len(q["records"]) for r in results for q in r["queries"]),
         "company_service_pairs": sum(len(r["services"]) for r in results),
+        "direct_company_service_pairs": sum(s.get("association", "direct") == "direct" for r in results for s in r["services"]),
+        "inherited_only_company_service_pairs": sum(s.get("association") == "inherited" for r in results for s in r["services"]),
         "distinct_services": len({s["service"] for r in results for s in r["services"]}),
         "evidence_matches": sum(len(r["matches"]) for r in results),
     }

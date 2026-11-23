@@ -159,22 +159,23 @@ def render(results, metadata, fmt):
         buffer = io.StringIO(newline="")
         writer = csv.writer(buffer)
         writer.writerow(["domain", "status", "service", "category", "confidence", "signal", "query_name",
-                         "value", "rule_id", "via", "fetched_at", "collection_method"])
+                         "value", "rule_id", "via", "fetched_at", "collection_method", "association"])
         for result in results:
             for match in result["matches"]:
                 writer.writerow([safe_csv(v) for v in [result["domain"], result["status"],
                     match["service"], match["category"], match["confidence"], match["signal"],
                     match["query_name"], match["value"], match["rule_id"], " -> ".join(match["via"]),
-                    match["fetched_at"], result["collection_method"]]])
+                    match["fetched_at"], result["collection_method"], match["association"]]])
             if not result["matches"]:
                 writer.writerow([safe_csv(v) for v in [result["domain"], result["status"], "", "", "", "", "", "", "", "",
-                                 result["collected_at"], result["collection_method"]]])
+                                 result["collected_at"], result["collection_method"], ""]])
         return buffer.getvalue()
     lines = ["TXT vendor associations (not proof of active use)"]
     for result in results:
         lines.append(f"\n{result['domain']} [{result['status']}; {result['collection_method']}]")
         for service in result["services"]:
-            lines.append(f"  {service['service']} | {service['confidence']} | {', '.join(service['signals'])} | {service['evidence_count']} evidence")
+            association = "inherited via SPF" if service.get("association") == "inherited" else "direct DNS reference"
+            lines.append(f"  {service['service']} | {service['confidence']} | {association} | {', '.join(service['signals'])} | {service['evidence_count']} evidence")
         if not result["services"]:
             lines.append("  No service matches; see query status before interpreting this result.")
         lines.extend(f"  Note: {warning}" for warning in result["warnings"])
@@ -230,6 +231,10 @@ def main(argv=None):
             for name in sorted({r["service"] for r in catalog["rules"]}):
                 print(name)
             return 0
+        output_paths = [Path(p).resolve() for p in (args.output, args.raw_output, args.db, args.unknowns) if p]
+        input_paths = {Path(p).resolve() for p in (args.batch, args.replay, args.import_web, args.import_dns, args.fingerprints) if p}
+        if len(output_paths) != len(set(output_paths)) or set(output_paths) & input_paths:
+            raise ValueError("Output paths must be distinct and must not overwrite inputs")
         if args.replay:
             results = read_replay(args.replay, catalog)
         elif args.import_web:
@@ -267,10 +272,6 @@ def main(argv=None):
                                 "spf_depth": 0 if args.apex_only else args.spf_depth,
                                 "max_queries": args.max_queries, "apex_only": args.apex_only,
                                 "offline": bool(args.replay or args.import_web or args.import_dns)}}
-        output_paths = [Path(p).resolve() for p in (args.output, args.raw_output, args.db, args.unknowns) if p]
-        input_paths = {Path(p).resolve() for p in (args.batch, args.replay, args.import_web, args.import_dns, args.fingerprints) if p}
-        if len(output_paths) != len(set(output_paths)) or set(output_paths) & input_paths:
-            raise ValueError("Output paths must be distinct and must not overwrite inputs")
         if args.raw_output:
             write_text(args.raw_output, "".join(json.dumps(r) + "\n" for r in results))
         if args.unknowns:

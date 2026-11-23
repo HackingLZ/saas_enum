@@ -101,6 +101,13 @@ def parse_response(name, payload, resolver, source_url, fetched_at=None):
         return result
     # Accept TXT only at the requested owner or at a returned CNAME-chain target.
     answers = payload.get("Answer", [])
+    if not isinstance(answers, list) or any(not isinstance(a, dict) for a in answers):
+        raise ValueError("Invalid DNS JSON: Answer must be a list of records")
+    for answer in answers:
+        if not isinstance(answer.get("name", ""), str):
+            raise ValueError("Invalid DNS JSON: record owner must be text")
+        if answer.get("type") in (5, 16) and not isinstance(answer.get("data"), str):
+            raise ValueError("Invalid DNS JSON: CNAME/TXT data must be text")
     allowed = {name.lower().rstrip(".")}
     for _ in range(16):
         targets = {a["data"].lower().rstrip(".") for a in answers

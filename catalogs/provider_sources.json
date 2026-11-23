@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "catalog": "dns_integrations.yaml",
+  "reviewed_on": "2026-11-23",
+  "review_scope": "Hostname-format documentation for these 20 additions only. Existing catalog entries were not revalidated by this expansion. No live company scans were used.",
+  "interpretation": "These patterns generate candidate hostnames. DNS answers, generic login pages, reflected names, and redirects alone do not establish tenant existence, ownership, paid accounts, or active usage.",
+  "providers": [
+    {
+      "service": "1Password Business/Teams",
+      "hostname_template": "SHORT_NAME.1password.com",
+      "surface": "tenant_application",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://support.1password.com/sso-configure-okta/"
+      ],
+      "notes": "Organization sign-in subdomain for .com-hosted team/business accounts. Regional .eu/.ca accounts and renamed sign-in addresses are outside this pattern; a shared sign-in flow alone is not tenant evidence."
+    },
+    {
+      "service": "Aha!",
+      "hostname_template": "SHORT_NAME.aha.io",
+      "surface": "tenant_application",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://www.aha.io/api/v3/oauth2",
+        "https://support.aha.io/aha-ideas/integrations/zendesk/zendesk-integration~7444678211442701418"
+      ],
+      "notes": "The account subdomain identifies an Aha! account. It does not distinguish which Aha! products are licensed, and a generic authorization page does not confirm company ownership."
+    },
+    {
+      "service": "Canny",
+      "hostname_template": "SHORT_NAME.canny.io",
+      "surface": "feedback_portal",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://help.canny.io/en/articles/1625730-installing-canny"
+      ],
+      "notes": "Public feedback portal subdomain chosen in branding settings. A portal may redirect to a custom domain; a portal association does not establish paid seats or active internal usage."
+    },
+    {
+      "service": "Chargebee",
+      "hostname_template": "SHORT_NAME.chargebee.com",
+      "surface": "tenant_application",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://apidocs.chargebee.com/docs/api/v2/pcv-1/getting-started",
+        "https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/custom-domain"
+      ],
+      "notes": "Chargebee site name, used by the application/API and hosted checkout. Test and live sites have distinct names; customers may use custom checkout domains. A site name need not equal the company name."
+    },
+    {
+      "service": "Gorgias",
+      "hostname_template": "SHORT_NAME.gorgias.com",
+      "surface": "tenant_application",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://docs.gorgias.com/en-US/create-a-gorgias-helpdesk-82010",
+        "https://docs.gorgias.com/en-US/sign-in-to-gorgias-2558571"
+      ],
+      "notes": "Chosen helpdesk subdomain. The same base domain also supports hosted help centers; a login redirect alone does not establish a real or active tenant."
+    },
+    {
+      "service": "Grafana Cloud",
+      "hostname_template": "SHORT_NAME.grafana.net",
+      "surface": "tenant_application",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://grafana.com/docs/grafana-cloud/platform/security-and-account-management/account-management/cloud-stacks/create-update-stacks/"
+      ],
+      "notes": "Grafana Cloud stack name, not necessarily the organization name. One account may contain multiple isolated stacks, and infrastructure/API hostnames under grafana.net are not covered by this stack-name pattern."
+    },
+    {
+      "service": "LearnUpon",
+      "hostname_template": "SHORT_NAME.learnupon.com",
+      "surface": "learning_portal",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://support.learnupon.com/hc/en-us/articles/360004833358-White-label-your-portal-with-a-custom-URL"
+      ],
+      "notes": "Learning portal subdomain. Parent and client sub-portals may use different names; the provider hostname can coexist with a custom domain. Portal branding does not identify the contractual customer by itself."
+    },
+    {
+      "service": "Odoo (hosted database)",
+      "hostname_template": "SHORT_NAME.odoo.com",
+      "surface": "tenant_application",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://www.odoo.com/documentation/19.0/applications/websites/website/configuration/domain_names.html"
+      ],
+      "notes": "Hosted database address that may also serve a website or portal and may use a custom domain. The database name need not equal the company name; this does not identify which Odoo applications are installed."
+    },
+    {
+      "service": "Personio",
+      "hostname_template": "SHORT_NAME.app.personio.com",
+      "surface": "tenant_application",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://support.personio.de/hc/en-us/articles/6692155343261-Troubleshoot-login-issues"
+      ],
+      "notes": "Current documented company-specific login hostname. The hostname is chosen by the company and may differ from its public name; generic login or SSO redirects do not confirm a tenant."
+    },
+    {
+      "service": "Pipedrive",
+      "hostname_template": "SHORT_NAME.pipedrive.com",
+      "surface": "tenant_application",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://support.pipedrive.com/en/article/changing-a-company-domain-in-pipedrive",
+        "https://pipedrive.readme.io/docs/core-api-concepts-authentication"
+      ],
+      "notes": "Company account domain replaces the shared app domain. Names are unique and configurable and need not exactly match the company name; generic authentication behavior is not positive tenant evidence."
+    },
+    {
+      "service": "Tellent Recruitee (careers)",
+      "hostname_template": "SHORT_NAME.recruitee.com",
+      "surface": "careers_site",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://support.recruitee.com/en/articles/1066308-manage-your-careers-site-s-url-and-search-visibility"
+      ],
+      "notes": "Hosted careers-site subdomain. A custom domain or differently named recruitment brand can hide this pattern; a published careers site is distinct from evidence about current recruiting activity or internal users."
+    },
+    {
+      "service": "Recurly",
+      "hostname_template": "SHORT_NAME.recurly.com",
+      "surface": "tenant_application",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://docs.recurly.com/recurly-subscriptions/reference/createsubscription",
+        "https://support.recurly.com/hc/en-us/articles/360031204691-Can-I-Change-My-Recurly-Site-s-Subdomain"
+      ],
+      "notes": "Recurly site subdomain used in account/API URLs. Production and sandbox sites can differ and subdomains can be renamed; a shared login page is insufficient attribution."
+    },
+    {
+      "service": "Retool",
+      "hostname_template": "SHORT_NAME.retool.com",
+      "surface": "tenant_application",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://docs.retool.com/org-users/quickstart"
+      ],
+      "notes": "Cloud-hosted organization subdomain. Self-hosted installations and nested space subdomains are outside this single-label pattern; organization naming and login redirects do not establish active app usage."
+    },
+    {
+      "service": "Sentry",
+      "hostname_template": "SHORT_NAME.sentry.io",
+      "surface": "tenant_application",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://docs.sentry.io/api/organizations/retrieve-an-organization/"
+      ],
+      "notes": "Organization slug used in the organizationUrl field. An organization can rename its slug; shared authentication or a slug match alone does not confirm ownership or current monitoring."
+    },
+    {
+      "service": "Shopify (storefront)",
+      "hostname_template": "SHORT_NAME.myshopify.com",
+      "surface": "storefront",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://help.shopify.com/en/manual/intro-to-shopify/initial-setup/setup-business-settings"
+      ],
+      "notes": "Store identifier and default storefront domain. Newly generated identifiers may be unrelated to the brand, and stores can choose a branded alias or custom domain. This targets storefront association, not proof of a company-wide software deployment."
+    },
+    {
+      "service": "Teamtailor (careers)",
+      "hostname_template": "SHORT_NAME.teamtailor.com",
+      "surface": "careers_site",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://support.teamtailor.com/en/articles/10942490-work-with-our-divisions-feature"
+      ],
+      "notes": "Main-company careers-site hostname. Division sites append a division name and are not guessed by this template; a published careers site does not establish hiring activity or account ownership."
+    },
+    {
+      "service": "Teamwork.com",
+      "hostname_template": "SHORT_NAME.teamwork.com",
+      "surface": "tenant_application",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://support.teamwork.com/projects/settings-administrator-only/changing-the-address-url-of-your-teamwork-site"
+      ],
+      "notes": "Configurable Teamwork site address. Custom domains and renamed sites can redirect; old addresses may remain redirects, so a successful redirect is not proof of current use."
+    },
+    {
+      "service": "Tines",
+      "hostname_template": "SHORT_NAME.tines.com",
+      "surface": "tenant_application",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://www.tines.com/stories/docs/quickstart/signing-in/",
+        "https://www.tines.com/stories/docs/admin/custom-domains/"
+      ],
+      "notes": "Company-named Tines tenant on the .com domain. Default generated tenant names and .io-hosted tenants are not guessed; documented custom tenant naming does not imply a real tenant for every company short name."
+    },
+    {
+      "service": "UserVoice",
+      "hostname_template": "SHORT_NAME.uservoice.com",
+      "surface": "feedback_portal",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://help.uservoice.com/hc/en-us/articles/360034982994-Set-up-your-own-URL-domain-for-UserVoice"
+      ],
+      "notes": "Default feedback-site subdomain. Provider URLs may redirect to a customer-managed domain; portal content can support an association, but a generic sign-in page or redirect alone cannot."
+    },
+    {
+      "service": "Webflow (staging site)",
+      "hostname_template": "SHORT_NAME.webflow.io",
+      "surface": "staging_site",
+      "basis": "vendor_documentation",
+      "sources": [
+        "https://help.webflow.com/hc/en-us/articles/33961419650067-Webflow-staging-subdomain"
+      ],
+      "notes": "User-selected staging-site subdomain, separate from workspace login and custom production domains. Published staging content can be old or belong to an agency; it does not establish a current production website or company ownership."
+    }
+  ]
+}

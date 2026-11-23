@@ -136,3 +136,25 @@ Broadcom CloudSOC CASB: SHORT_NAME.elastica.net
 GitHub Codespaces: SHORT_NAME.github.dev
 VMware Cloud (AWS Integration): SHORT_NAME.vmwarevmc.com
 Slack Status: SHORT_NAME.slackstatus.com
+
+# Documented candidate hostname patterns; provenance: catalogs/provider_sources.json
+1Password Business/Teams: SHORT_NAME.1password.com
+Aha!: SHORT_NAME.aha.io
+Canny: SHORT_NAME.canny.io
+Chargebee: SHORT_NAME.chargebee.com
+Gorgias: SHORT_NAME.gorgias.com
+Grafana Cloud: SHORT_NAME.grafana.net
+LearnUpon: SHORT_NAME.learnupon.com
+Odoo (hosted database): SHORT_NAME.odoo.com
+Personio: SHORT_NAME.app.personio.com
+Pipedrive: SHORT_NAME.pipedrive.com
+Tellent Recruitee (careers): SHORT_NAME.recruitee.com
+Recurly: SHORT_NAME.recurly.com
+Retool: SHORT_NAME.retool.com
+Sentry: SHORT_NAME.sentry.io
+Shopify (storefront): SHORT_NAME.myshopify.com
+Teamtailor (careers): SHORT_NAME.teamtailor.com
+Teamwork.com: SHORT_NAME.teamwork.com
+Tines: SHORT_NAME.tines.com
+UserVoice: SHORT_NAME.uservoice.com
+Webflow (staging site): SHORT_NAME.webflow.io
