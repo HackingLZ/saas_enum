@@ -1,0 +1,56 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+output/
+*.sqlite-wal
+*.sqlite-shm
+.DS_Store
+
+# Local inputs, collected evidence, and generated reports
+/data/
+/companies.txt
+/results.*
+/report.*
+/observations.*
+/unknowns.*
+*.csv
+*.jsonl
+*.log
+*.har
+
+# Databases, including journals and backups
+*.sqlite
+*.sqlite3
+*.db
+*.sqlite-*
+*.sqlite3-*
+*.db-*
+*.bak
+
+# Local study scripts depend on private inputs and include research selections
+/scripts/select_expansion.py
+/scripts/curate_expansion.py
+/scripts/curate_discovery.py
+/scripts/evaluate_expansion.py
+/scripts/release_catalog.py
+
+# Environment, credentials, and local assistant configuration
+.env
+.env.*
+.aws/
+.ssh/
+.codex/
+.agents/
+.claude/
+.netrc
+.npmrc
+.pypirc
+secrets/
+credentials/
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*

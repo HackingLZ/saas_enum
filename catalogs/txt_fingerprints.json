@@ -1,0 +1,4369 @@
+{
+  "schema_version": 1,
+  "version": "1.3.1-public.1",
+  "description": "Generic TXT detection signatures. High confidence is supported by linked vendor documentation; medium confidence is an inference. Scan domains, raw observations, and observation lookup URLs are excluded. Matches do not establish active product use.",
+  "rules": [
+    {
+      "id": "txt-google-site-verification",
+      "service": "Google domain verification",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^google-site-verification=[^\\s]+$",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Shared Google verification mechanism, including Search Console. Does not establish Google Workspace or Gmail usage.",
+      "sources": [
+        "https://support.google.com/webmasters/answer/9008080?hl=en"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-atlassian-domain-verification",
+      "service": "Atlassian",
+      "category": "collaboration",
+      "kind": "txt_regex",
+      "pattern": "^atlassian-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-docusign",
+      "service": "DocuSign",
+      "category": "e-signature",
+      "kind": "txt_regex",
+      "pattern": "^docusign=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-apple-domain-verification",
+      "service": "Apple domain verification",
+      "category": "identity",
+      "kind": "txt_regex",
+      "pattern": "^apple-domain-verification=[^\\s]+$",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Apple domain verification is shared by Apple Business and Apple School Manager; the marker alone does not identify which product is used.",
+      "sources": [
+        "https://support.apple.com/en-gb/guide/business/axm48c3280c0/web",
+        "https://support.apple.com/en-ph/guide/apple-school-manager/axm48c3280c0/web"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-stripe-verification",
+      "service": "Stripe",
+      "category": "payments",
+      "kind": "txt_regex",
+      "pattern": "^stripe-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-facebook-domain-verification",
+      "service": "Meta domain verification",
+      "category": "advertising",
+      "kind": "txt_regex",
+      "pattern": "^facebook-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-openai-domain-verification",
+      "service": "OpenAI",
+      "category": "AI",
+      "kind": "txt_regex",
+      "pattern": "^openai-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-miro-verification",
+      "service": "Miro",
+      "category": "collaboration",
+      "kind": "txt_regex",
+      "pattern": "^miro-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-adobe-idp-site-verification",
+      "service": "Adobe Identity",
+      "category": "identity",
+      "kind": "txt_regex",
+      "pattern": "^adobe-idp-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-onetrust-domain-verification",
+      "service": "OneTrust",
+      "category": "privacy",
+      "kind": "txt_regex",
+      "pattern": "^onetrust-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-jamf-site-verification",
+      "service": "Jamf",
+      "category": "device management",
+      "kind": "txt_regex",
+      "pattern": "^jamf-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-cisco-ci-domain-verification",
+      "service": "Cisco identity",
+      "category": "identity",
+      "kind": "txt_regex",
+      "pattern": "^cisco-ci-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-docker-verification",
+      "service": "Docker",
+      "category": "developer tools",
+      "kind": "txt_regex",
+      "pattern": "^docker-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-slack-domain-verification",
+      "service": "Slack",
+      "category": "collaboration",
+      "kind": "txt_regex",
+      "pattern": "^slack-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-yahoo-verification-key",
+      "service": "Yahoo domain verification",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^yahoo-verification-key=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-liveramp-site-verification",
+      "service": "LiveRamp",
+      "category": "advertising",
+      "kind": "txt_regex",
+      "pattern": "^liveramp-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-canva-site-verification",
+      "service": "Canva",
+      "category": "design",
+      "kind": "txt_regex",
+      "pattern": "^canva-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-smartsheet-site-validation",
+      "service": "Smartsheet",
+      "category": "collaboration",
+      "kind": "txt_regex",
+      "pattern": "^smartsheet-site-validation=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-mongodb-site-verification",
+      "service": "MongoDB",
+      "category": "database",
+      "kind": "txt_regex",
+      "pattern": "^mongodb-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-globalsign-domain-verification",
+      "service": "GlobalSign",
+      "category": "certificates",
+      "kind": "txt_regex",
+      "pattern": "^_globalsign-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-globalsign-domain-verification-alternate",
+      "service": "GlobalSign",
+      "category": "certificates",
+      "kind": "txt_regex",
+      "pattern": "^globalsign-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-lucidlink-verification",
+      "service": "LucidLink",
+      "category": "file storage",
+      "kind": "txt_regex",
+      "pattern": "^lucidlink-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-1password-site-verification",
+      "service": "1Password",
+      "category": "security",
+      "kind": "txt_regex",
+      "pattern": "^1password-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-mixpanel-domain-verify",
+      "service": "Mixpanel",
+      "category": "analytics",
+      "kind": "txt_regex",
+      "pattern": "^mixpanel-domain-verify=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-postman-domain-verification",
+      "service": "Postman",
+      "category": "developer tools",
+      "kind": "txt_regex",
+      "pattern": "^postman-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-dropbox-domain-verification",
+      "service": "Dropbox",
+      "category": "file storage",
+      "kind": "txt_regex",
+      "pattern": "^dropbox-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-have-i-been-pwned-verification",
+      "service": "Have I Been Pwned",
+      "category": "security",
+      "kind": "txt_regex",
+      "pattern": "^have-i-been-pwned-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-hubspot-domain-verification",
+      "service": "HubSpot",
+      "category": "CRM",
+      "kind": "txt_regex",
+      "pattern": "^hubspot-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-dynatrace-site-verification",
+      "service": "Dynatrace",
+      "category": "observability",
+      "kind": "txt_regex",
+      "pattern": "^Dynatrace-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-cerner-client-id",
+      "service": "Oracle Cerner",
+      "category": "healthcare",
+      "kind": "txt_regex",
+      "pattern": "^cerner-client-id=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-google-gws-recovery-domain-verification",
+      "service": "Google Workspace recovery",
+      "category": "identity",
+      "kind": "txt_regex",
+      "pattern": "^google-gws-recovery-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-hpe-greenlake-domain-verification",
+      "service": "HPE GreenLake",
+      "category": "cloud",
+      "kind": "txt_regex",
+      "pattern": "^hpe-greenlake-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-workplace-domain-verification",
+      "service": "Meta Workplace",
+      "category": "collaboration",
+      "kind": "txt_regex",
+      "pattern": "^workplace-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-linear-domain-verification",
+      "service": "Linear",
+      "category": "project management",
+      "kind": "txt_regex",
+      "pattern": "^linear-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-airtable-verification",
+      "service": "Airtable",
+      "category": "collaboration",
+      "kind": "txt_regex",
+      "pattern": "^airtable-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-shopify-verification-code",
+      "service": "Shopify",
+      "category": "commerce",
+      "kind": "txt_regex",
+      "pattern": "^shopify-verification-code=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-loom-site-verification",
+      "service": "Loom",
+      "category": "collaboration",
+      "kind": "txt_regex",
+      "pattern": "^loom-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-wrike-verification",
+      "service": "Wrike",
+      "category": "project management",
+      "kind": "txt_regex",
+      "pattern": "^wrike-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-twilio-domain-verification",
+      "service": "Twilio",
+      "category": "communications",
+      "kind": "txt_regex",
+      "pattern": "^twilio-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-tiktok-developers-site-verification",
+      "service": "TikTok developer platform",
+      "category": "advertising",
+      "kind": "txt_regex",
+      "pattern": "^tiktok-developers-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-jumio-up-idp-domain-verification",
+      "service": "Jumio",
+      "category": "identity",
+      "kind": "txt_regex",
+      "pattern": "^jumio-up-idp-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-lucid-verification",
+      "service": "Lucid",
+      "category": "collaboration",
+      "kind": "txt_regex",
+      "pattern": "^lucid-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-jetbrains-domain-verification",
+      "service": "JetBrains",
+      "category": "developer tools",
+      "kind": "txt_regex",
+      "pattern": "^jetbrains-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-paloaltonetworks-site-verification",
+      "service": "Palo Alto Networks",
+      "category": "security",
+      "kind": "txt_regex",
+      "pattern": "^paloaltonetworks-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-bettercomp-verify",
+      "service": "BetterComp",
+      "category": "HR",
+      "kind": "txt_regex",
+      "pattern": "^bettercomp-verify=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-ecostruxure-it-verification",
+      "service": "Schneider Electric EcoStruxure IT",
+      "category": "infrastructure",
+      "kind": "txt_regex",
+      "pattern": "^ecostruxure-it-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-atlassian-sending-domain-verification",
+      "service": "Atlassian",
+      "category": "collaboration",
+      "kind": "txt_regex",
+      "pattern": "^atlassian-sending-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-sitecore-domain-verification",
+      "service": "Sitecore",
+      "category": "content management",
+      "kind": "txt_regex",
+      "pattern": "^sitecore-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-hubspot-developer-verification",
+      "service": "HubSpot developer platform",
+      "category": "developer tools",
+      "kind": "txt_regex",
+      "pattern": "^hubspot-developer-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-zoom-domain-verification",
+      "service": "Zoom",
+      "category": "communications",
+      "kind": "txt_regex",
+      "pattern": "^zoom-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-globalsign-smime-dv",
+      "service": "GlobalSign S/MIME",
+      "category": "certificates",
+      "kind": "txt_regex",
+      "pattern": "^globalsign-smime-dv=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-arcules-domain-verification",
+      "service": "Arcules",
+      "category": "physical security",
+      "kind": "txt_regex",
+      "pattern": "^arcules-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-calendly-site-verification",
+      "service": "Calendly",
+      "category": "scheduling",
+      "kind": "txt_regex",
+      "pattern": "^calendly-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-krisp-domain-verification",
+      "service": "Krisp",
+      "category": "communications",
+      "kind": "txt_regex",
+      "pattern": "^krisp-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-creatopy-domain-verification",
+      "service": "Creatopy",
+      "category": "design",
+      "kind": "txt_regex",
+      "pattern": "^creatopy-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-drift-domain-verification",
+      "service": "Drift",
+      "category": "marketing",
+      "kind": "txt_regex",
+      "pattern": "^drift-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-logmein-verification-code",
+      "service": "GoTo / LogMeIn",
+      "category": "communications",
+      "kind": "txt_regex",
+      "pattern": "^logmein-verification-code=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-zapier-domain-verification-challenge",
+      "service": "Zapier",
+      "category": "automation",
+      "kind": "txt_regex",
+      "pattern": "^zapier-domain-verification-challenge=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-warpstream-verification",
+      "service": "WarpStream",
+      "category": "data streaming",
+      "kind": "txt_regex",
+      "pattern": "^warpstream-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-infoblox-domain-mastery",
+      "service": "Infoblox",
+      "category": "infrastructure",
+      "kind": "txt_regex",
+      "pattern": "^infoblox-domain-mastery=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-loaderio",
+      "service": "Loader.io",
+      "category": "developer tools",
+      "kind": "txt_regex",
+      "pattern": "^loaderio=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-piktochart-site-verification",
+      "service": "Piktochart",
+      "category": "design",
+      "kind": "txt_regex",
+      "pattern": "^piktochart-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-parallels-domain-verification",
+      "service": "Parallels",
+      "category": "virtualization",
+      "kind": "txt_regex",
+      "pattern": "^parallels-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-bluebeam-verification",
+      "service": "Bluebeam",
+      "category": "design",
+      "kind": "txt_regex",
+      "pattern": "^bluebeam-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-keybase-site-verification",
+      "service": "Keybase",
+      "category": "identity",
+      "kind": "txt_regex",
+      "pattern": "^keybase-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-attio-domain-verification",
+      "service": "Attio",
+      "category": "CRM",
+      "kind": "txt_regex",
+      "pattern": "^attio-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-sinch-domain-verification",
+      "service": "Sinch",
+      "category": "communications",
+      "kind": "txt_regex",
+      "pattern": "^sinch-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-clickhouse-verification",
+      "service": "ClickHouse",
+      "category": "database",
+      "kind": "txt_regex",
+      "pattern": "^clickhouse-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-applause-verification",
+      "service": "Applause",
+      "category": "testing",
+      "kind": "txt_regex",
+      "pattern": "^applause-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-pinterest-site-verification",
+      "service": "Pinterest",
+      "category": "advertising",
+      "kind": "txt_regex",
+      "pattern": "^pinterest-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-monday-com-verification",
+      "service": "monday.com",
+      "category": "project management",
+      "kind": "txt_regex",
+      "pattern": "^monday-com-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-box-domain-verification",
+      "service": "Box",
+      "category": "file storage",
+      "kind": "txt_regex",
+      "pattern": "^box-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-protonmail-verification",
+      "service": "Proton Mail",
+      "category": "email",
+      "kind": "txt_regex",
+      "pattern": "^protonmail-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-datadome-domain-verify",
+      "service": "DataDome",
+      "category": "security",
+      "kind": "txt_regex",
+      "pattern": "^datadome-domain-verify=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-gradle-verification",
+      "service": "Gradle",
+      "category": "developer tools",
+      "kind": "txt_regex",
+      "pattern": "^gradle-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-wework-site-verification",
+      "service": "WeWork",
+      "category": "workplace",
+      "kind": "txt_regex",
+      "pattern": "^wework-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-segment-site-verification",
+      "service": "Twilio Segment",
+      "category": "analytics",
+      "kind": "txt_regex",
+      "pattern": "^segment-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-pexip-portal-domain-verification",
+      "service": "Pexip",
+      "category": "communications",
+      "kind": "txt_regex",
+      "pattern": "^pexip-portal-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-teamviewer-sso-verification",
+      "service": "TeamViewer",
+      "category": "remote access",
+      "kind": "txt_regex",
+      "pattern": "^teamviewer-sso-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-notion-domain-verification",
+      "service": "Notion",
+      "category": "collaboration",
+      "kind": "txt_regex",
+      "pattern": "^notion-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-extensis-domain-verification",
+      "service": "Extensis",
+      "category": "digital asset management",
+      "kind": "txt_regex",
+      "pattern": "^extensis-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-microsoft",
+      "service": "Microsoft domain verification",
+      "category": "identity",
+      "kind": "txt_regex",
+      "pattern": "^MS=(?:ms[0-9]+|[A-F0-9]{32,40})$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-anthropic",
+      "service": "Anthropic",
+      "category": "AI",
+      "kind": "txt_regex",
+      "pattern": "^anthropic-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-cursor",
+      "service": "Cursor",
+      "category": "developer tools",
+      "kind": "txt_regex",
+      "pattern": "^cursor-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-serval",
+      "service": "Serval",
+      "category": "IT automation",
+      "kind": "txt_regex",
+      "pattern": "^serval-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-vercel",
+      "service": "Vercel",
+      "category": "hosting",
+      "kind": "txt_regex",
+      "pattern": "^vercel-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-tailscale",
+      "service": "Tailscale",
+      "category": "networking",
+      "kind": "txt_regex",
+      "pattern": "^TAILSCALE-[A-Za-z0-9_-]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-zoom-legacy",
+      "service": "Zoom",
+      "category": "communications",
+      "kind": "txt_regex",
+      "pattern": "^ZOOM_verify_[A-Za-z0-9_-]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-webex",
+      "service": "Cisco Webex",
+      "category": "communications",
+      "kind": "txt_regex",
+      "pattern": "^webexdomainverification\\.[^=]*=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-amazonses",
+      "service": "Amazon SES",
+      "category": "email",
+      "kind": "txt_regex",
+      "pattern": "^amazonses:[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-brevo",
+      "service": "Brevo",
+      "category": "marketing",
+      "kind": "txt_regex",
+      "pattern": "^brevo-code:[a-z0-9]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-perplexity",
+      "service": "Perplexity",
+      "category": "AI",
+      "kind": "txt_regex",
+      "pattern": "^perplexity-ai-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-google-mail",
+      "service": "Google mail",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "_spf.google.com",
+        "_netblocks.google.com",
+        "_netblocks2.google.com",
+        "_netblocks3.google.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "A positive SPF include or redirect references this provider; not proof of valid SPF, current mail flow, a paid account, or product deployment.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-microsoft-365",
+      "service": "Microsoft 365 email",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "spf.protection.outlook.com"
+      ],
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "A positive SPF include or redirect references this provider; not proof of valid SPF, current mail flow, a paid account, or product deployment.",
+      "sources": [
+        "https://learn.microsoft.com/en-us/defender-office-365/email-authentication-spf-configure"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-zendesk",
+      "service": "Zendesk",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "mail.zendesk.com",
+        "smtp.zendesk.com",
+        "support.zendesk.com"
+      ],
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "A positive SPF include or redirect references this provider; not proof of valid SPF, current mail flow, a paid account, or product deployment.",
+      "sources": [
+        "https://support.zendesk.com/hc/en-us/articles/4408832543770-Allowing-Zendesk-to-send-email-on-behalf-of-your-email-domain"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-sendgrid",
+      "service": "Twilio SendGrid",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "sendgrid.net"
+      ],
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "A positive SPF include or redirect references this provider; not proof of valid SPF, current mail flow, a paid account, or product deployment.",
+      "sources": [
+        "https://www.twilio.com/docs/sendgrid/ui/sending-email/verify-sender-with-spf"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-salesforce",
+      "service": "Salesforce email",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "_spf.salesforce.com"
+      ],
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "A positive SPF include or redirect references this provider; not proof of valid SPF, current mail flow, a paid account, or product deployment.",
+      "sources": [
+        "https://help.salesforce.com/s/articleView?id=Which-Email-Setup-is-Best-for-My-Org&language=en_US&type=1"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-amazon-ses",
+      "service": "Amazon SES",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "amazonses.com"
+      ],
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "A positive SPF include or redirect references this provider; not proof of valid SPF, current mail flow, a paid account, or product deployment.",
+      "sources": [
+        "https://docs.aws.amazon.com/ses/latest/dg/getting-started-sending.html"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-mailchimp",
+      "service": "Mailchimp",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "servers.mcsv.net",
+        "spf1.mcsv.net"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "A positive SPF include or redirect references this provider; not proof of valid SPF, current mail flow, a paid account, or product deployment.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-mandrill",
+      "service": "Mailchimp Transactional / Mandrill",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "spf.mandrillapp.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "A positive SPF include or redirect references this provider; not proof of valid SPF, current mail flow, a paid account, or product deployment.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-mailgun",
+      "service": "Mailgun",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "mailgun.org"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "A positive SPF include or redirect references this provider; not proof of valid SPF, current mail flow, a paid account, or product deployment.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-marketo",
+      "service": "Adobe Marketo",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "mktomail.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "A positive SPF include or redirect references this provider; not proof of valid SPF, current mail flow, a paid account, or product deployment.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-pardot",
+      "service": "Salesforce Account Engagement / Pardot",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "aspmx.pardot.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "A positive SPF include or redirect references this provider; not proof of valid SPF, current mail flow, a paid account, or product deployment.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-proofpoint",
+      "service": "Proofpoint",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "pphosted.com",
+        "ppops.net"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Observed provider-domain attribution; matches SPF references at a DNS label boundary. Does not establish current use.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-red-sift",
+      "service": "Red Sift OnDMARC",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "_spf.smart.ondmarc.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "A positive SPF include or redirect references this provider; not proof of valid SPF, current mail flow, a paid account, or product deployment.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-greenhouse",
+      "service": "Greenhouse",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "mg-spf.greenhouse.io"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "A positive SPF include or redirect references this provider; not proof of valid SPF, current mail flow, a paid account, or product deployment.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-qualtrics",
+      "service": "Qualtrics",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "_spf.qemailserver.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "A positive SPF include or redirect references this provider; not proof of valid SPF, current mail flow, a paid account, or product deployment.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-statuspage",
+      "service": "Atlassian Statuspage",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "stspg-customer.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "A positive SPF include or redirect references this provider; not proof of valid SPF, current mail flow, a paid account, or product deployment.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-clearslide",
+      "service": "ClearSlide",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "spf.clearslide.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "A positive SPF include or redirect references this provider; not proof of valid SPF, current mail flow, a paid account, or product deployment.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-sidetrade",
+      "service": "Sidetrade",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "_spf.sidetrade.net"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "A positive SPF include or redirect references this provider; not proof of valid SPF, current mail flow, a paid account, or product deployment.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "dmarc-postmark",
+      "service": "Postmark DMARC",
+      "category": "email security",
+      "kind": "dmarc_domain",
+      "domains": [
+        "inbound.postmarkapp.com",
+        "dmarc.postmarkapp.com"
+      ],
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "DMARC reporting destination only; not proof of sending mail via Postmark.",
+      "sources": [
+        "https://dmarc.postmarkapp.com/"
+      ]
+    },
+    {
+      "id": "txt-wiz-domain-verification",
+      "service": "Wiz",
+      "category": "security",
+      "kind": "txt_regex",
+      "pattern": "^wiz-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-pendo-domain-verification",
+      "service": "Pendo",
+      "category": "analytics",
+      "kind": "txt_regex",
+      "pattern": "^pendo-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-elevenlabs",
+      "service": "ElevenLabs",
+      "category": "AI",
+      "kind": "txt_regex",
+      "pattern": "^elevenlabs=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-figma-domain-verification",
+      "service": "Figma",
+      "category": "design",
+      "kind": "txt_regex",
+      "pattern": "^figma-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-autodesk-domain-verification",
+      "service": "Autodesk",
+      "category": "design",
+      "kind": "txt_regex",
+      "pattern": "^autodesk-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-adobe-sign-verification",
+      "service": "Adobe Acrobat Sign",
+      "category": "e-signature",
+      "kind": "txt_regex",
+      "pattern": "^adobe-sign-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-dell-technologies-domain-verification",
+      "service": "Dell Technologies",
+      "category": "infrastructure",
+      "kind": "txt_regex",
+      "pattern": "^dell-technologies-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-bugcrowd-verification",
+      "service": "Bugcrowd",
+      "category": "security",
+      "kind": "txt_regex",
+      "pattern": "^bugcrowd-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-spycloud-domain-verification",
+      "service": "SpyCloud",
+      "category": "security",
+      "kind": "txt_regex",
+      "pattern": "^spycloud-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-browserstack-domain-verification",
+      "service": "BrowserStack",
+      "category": "testing",
+      "kind": "txt_regex",
+      "pattern": "^browserstack-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-censys-domain-verification",
+      "service": "Censys",
+      "category": "security",
+      "kind": "txt_regex",
+      "pattern": "^censys-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-detectify-verification",
+      "service": "Detectify",
+      "category": "security",
+      "kind": "txt_regex",
+      "pattern": "^detectify-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-klaviyo-site-verification",
+      "service": "Klaviyo",
+      "category": "marketing",
+      "kind": "txt_regex",
+      "pattern": "^klaviyo-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-reachdesk-verification",
+      "service": "Reachdesk",
+      "category": "marketing",
+      "kind": "txt_regex",
+      "pattern": "^reachdesk-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-remarkable-domain-verification",
+      "service": "reMarkable",
+      "category": "productivity",
+      "kind": "txt_regex",
+      "pattern": "^remarkable-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-aliyun-site-verification",
+      "service": "Alibaba Cloud",
+      "category": "cloud",
+      "kind": "txt_regex",
+      "pattern": "^aliyun-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-gather-domain-verification",
+      "service": "Gather",
+      "category": "collaboration",
+      "kind": "txt_regex",
+      "pattern": "^gather-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-knowbe4-site-verification",
+      "service": "KnowBe4",
+      "category": "security",
+      "kind": "txt_regex",
+      "pattern": "^knowbe4-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-qqmail-site-verification",
+      "service": "Tencent QQ Mail",
+      "category": "email",
+      "kind": "txt_regex",
+      "pattern": "^qqmail-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-adobe-aem-verification",
+      "service": "Adobe Experience Manager",
+      "category": "content management",
+      "kind": "txt_regex",
+      "pattern": "^adobe-aem-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-amazon-business-verification",
+      "service": "Amazon Business",
+      "category": "commerce",
+      "kind": "txt_regex",
+      "pattern": "^amazon-business-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-beautifulai-site-verification",
+      "service": "Beautiful.ai",
+      "category": "design",
+      "kind": "txt_regex",
+      "pattern": "^beautifulai-site-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-bitrise-verification",
+      "service": "Bitrise",
+      "category": "developer tools",
+      "kind": "txt_regex",
+      "pattern": "^bitrise-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-brave-ledger-verification",
+      "service": "Brave Rewards",
+      "category": "advertising",
+      "kind": "txt_regex",
+      "pattern": "^brave-ledger-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-citrix-verification-code",
+      "service": "Citrix",
+      "category": "virtualization",
+      "kind": "txt_regex",
+      "pattern": "^citrix-verification-code=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-favro-verification",
+      "service": "Favro",
+      "category": "project management",
+      "kind": "txt_regex",
+      "pattern": "^favro-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-foxit-domain-verification",
+      "service": "Foxit",
+      "category": "document management",
+      "kind": "txt_regex",
+      "pattern": "^foxit-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-freepik-domain-verification",
+      "service": "Freepik",
+      "category": "design",
+      "kind": "txt_regex",
+      "pattern": "^freepik-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-gentrace-domain-verification",
+      "service": "Gentrace",
+      "category": "AI",
+      "kind": "txt_regex",
+      "pattern": "^gentrace-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-gitkraken-domain-verification",
+      "service": "GitKraken",
+      "category": "developer tools",
+      "kind": "txt_regex",
+      "pattern": "^gitkraken-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-heygen-verification",
+      "service": "HeyGen",
+      "category": "AI",
+      "kind": "txt_regex",
+      "pattern": "^heygen-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-intercom-domain-validation",
+      "service": "Intercom",
+      "category": "customer support",
+      "kind": "txt_regex",
+      "pattern": "^intercom-domain-validation=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-launchdarkly-domain-verification",
+      "service": "LaunchDarkly",
+      "category": "developer tools",
+      "kind": "txt_regex",
+      "pattern": "^launchdarkly-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-loom-verification",
+      "service": "Loom",
+      "category": "collaboration",
+      "kind": "txt_regex",
+      "pattern": "^loom-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-coda-verification",
+      "service": "Coda",
+      "category": "collaboration",
+      "kind": "txt_regex",
+      "pattern": "^coda-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-descope-domain-verification",
+      "service": "Descope",
+      "category": "identity",
+      "kind": "txt_regex",
+      "pattern": "^descope-domain-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-neat-pulse",
+      "service": "Neat Pulse",
+      "category": "device management",
+      "kind": "txt_regex",
+      "pattern": "^neat-pulse-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-gamma",
+      "service": "Gamma",
+      "category": "AI",
+      "kind": "txt_regex",
+      "pattern": "^gamma-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-decagon",
+      "service": "Decagon",
+      "category": "customer support",
+      "kind": "txt_regex",
+      "pattern": "^decagon-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-dust",
+      "service": "Dust",
+      "category": "AI",
+      "kind": "txt_regex",
+      "pattern": "^dust-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-amp-by-sourcegraph",
+      "service": "Sourcegraph Amp",
+      "category": "developer tools",
+      "kind": "txt_regex",
+      "pattern": "^amp-by-sourcegraph-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-gc-ai",
+      "service": "GC AI",
+      "category": "AI",
+      "kind": "txt_regex",
+      "pattern": "^gc-ai-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-vizcom",
+      "service": "Vizcom",
+      "category": "design",
+      "kind": "txt_regex",
+      "pattern": "^vizcom-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Vendor attribution inferred from an explicit branded marker reviewed by Codex. Product and active use are not established; not independently validated against vendor documentation.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-cloudflare-dashboard-sso",
+      "service": "Cloudflare dashboard SSO",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^cloudflare_dashboard_sso=[A-Za-z0-9_-]+$",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Vendor documentation supports this marker. Attribution does not prove active usage.",
+      "sources": [
+        "https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-statuspage-verification",
+      "service": "Atlassian Statuspage",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^status-page-domain-verification=[^\\s]+$",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Vendor documentation supports this marker. Attribution does not prove active usage.",
+      "sources": [
+        "https://support.atlassian.com/statuspage/docs/configure-your-dns"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-asana-verification",
+      "service": "Asana",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^asv=[a-f0-9]{32}$",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Vendor documentation supports this marker. Attribution does not prove active usage.",
+      "sources": [
+        "https://help.asana.com/s/article/email-domain-management-for-asana-organizations"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-hashicorp-cloud",
+      "service": "HashiCorp Cloud Platform",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^hcp-domain-verification=[^\\s]+$",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Vendor documentation supports this marker. Attribution does not prove active usage.",
+      "sources": [
+        "https://developer.hashicorp.com/hcp/docs/hcp/iam/sso/troubleshoot"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-azure-email-verification",
+      "service": "Azure Communication Services email",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^ms-domain-verification=[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Vendor documentation supports this marker. Attribution does not prove active usage.",
+      "sources": [
+        "https://learn.microsoft.com/en-us/azure/communication-services/concepts/email/email-domain-configuration-troubleshooting"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-cloudhealth-verification",
+      "service": "CloudHealth",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^cloudhealth=[^\\s]+$",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Vendor documentation supports this marker. Attribution does not prove active usage.",
+      "sources": [
+        "https://aws.amazon.com/blogs/apn/aws-single-sign-on-service-integration-guide-for-cloudhealth/"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-yandex-verification",
+      "service": "Yandex Webmaster",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^yandex-verification:\\s*[a-f0-9]+$",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Vendor documentation supports this marker. Attribution does not prove active usage.",
+      "sources": [
+        "https://www.yandex.com/support/webmaster/en/service/rights-management"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-zoho-verification",
+      "service": "Zoho domain verification",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^zoho-verification=zb[0-9]+\\.zmverify\\.zoho\\.(?:com|eu|in|com\\.au|com\\.cn|jp|ca|sa)$",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Vendor documentation supports this marker. Attribution does not prove active usage.",
+      "sources": [
+        "https://www.zoho.com/mail/help/adminconsole/domain-verification.html"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-pexip-ms-tenant",
+      "service": "Pexip",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^pexip-ms-tenant-domain-verification=[a-f0-9-]+(?:,[a-f0-9-]+)*$",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Vendor documentation supports this marker. Attribution does not prove active usage.",
+      "sources": [
+        "https://help.pexip.com/service/msdomains.htm"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-uber-domain-verification",
+      "service": "Uber",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^uber\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-uber-site-verification",
+      "service": "Uber",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^uber\\-site\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-ciscocidomainverification",
+      "service": "Cisco identity",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^ciscocidomainverification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-intersight",
+      "service": "Cisco Intersight",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^intersight=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-duo-sso-verification",
+      "service": "Cisco Duo SSO",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^duo_sso_verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-ibmid",
+      "service": "IBM identity",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^ibmid=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-traction-guest",
+      "service": "Traction Guest",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^traction\\-guest=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-mailru-verification",
+      "service": "Mail.ru",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^mailru\\-verification:\\s*[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-site24x7-signals-domain-verification",
+      "service": "Site24x7",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^site24x7\\-signals\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-snowflake-verification",
+      "service": "Snowflake",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^snowflake\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-sophos-domain-verification",
+      "service": "Sophos",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^sophos\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-tiktok-domain-verification",
+      "service": "TikTok",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^tiktok\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-unity-sso-verification",
+      "service": "Unity SSO",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^unity\\-sso\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-windsurf-verification",
+      "service": "Windsurf",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^windsurf\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-anodot-domain-verification",
+      "service": "Anodot",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^anodot\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-appspace-domain-verification",
+      "service": "Appspace",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^appspace\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-arkose-domain-verify",
+      "service": "Arkose Labs",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^arkose\\-domain\\-verify=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-avalara-saml-domain",
+      "service": "Avalara",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^avalara\\-saml\\-domain=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-clickup-verification",
+      "service": "ClickUp",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^clickup\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-cloudbees-domain-verification",
+      "service": "CloudBees",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^cloudbees\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-coursera-domain-verification",
+      "service": "Coursera",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^coursera\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-deepl-domain-verification",
+      "service": "DeepL",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^deepl\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-doordash-verification",
+      "service": "DoorDash",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^doordash\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-easydmarc-verification",
+      "service": "EasyDMARC",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^easydmarc\\-verification:\\s*[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-elastic-cloud-verification",
+      "service": "Elastic Cloud",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^elastic\\-cloud\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-fireflies-verification",
+      "service": "Fireflies",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^fireflies\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-fortinet-fortiphish-site-verification",
+      "service": "Fortinet FortiPhish",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^fortinet\\-fortiphish\\-site\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-goodnotes-verification",
+      "service": "Goodnotes",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^goodnotes\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-happeo-site-verification",
+      "service": "Happeo",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^happeo\\-site\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-heroku-domain-verification",
+      "service": "Heroku",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^heroku\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-heyhack-verification",
+      "service": "Heyhack",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^heyhack\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-kahoot-domain-verification",
+      "service": "Kahoot",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^kahoot\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-logmein-domain-confirmation",
+      "service": "GoTo / LogMeIn",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^logmein\\-domain\\-confirmation=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-lucidchart-verification",
+      "service": "Lucid",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^lucidchart\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-mailigen-site-verification",
+      "service": "Mailigen",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^mailigen\\-site\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-meshy-verification",
+      "service": "Meshy",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^meshy\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-mindmanager-verification",
+      "service": "MindManager",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^mindmanager\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-northpass-domain-verification",
+      "service": "Northpass",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^northpass\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-parkable-domain-verification",
+      "service": "Parkable",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^parkable\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-parsec-domain-verification",
+      "service": "Parsec",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^parsec\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-pigeonholelive-site-verification",
+      "service": "Pigeonhole Live",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^pigeonholelive\\-site\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-reftab-domain-verification",
+      "service": "Reftab",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^reftab\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-remote-domain-verification",
+      "service": "Remote",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^remote\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-report-uri-verification",
+      "service": "Report URI",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^report\\-uri\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-rippling-domain-verification",
+      "service": "Rippling",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^rippling\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-safetyculture-domain-verification",
+      "service": "SafetyCulture",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^safetyculture\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-samsung-domain-verification",
+      "service": "Samsung",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^samsung\\-domain\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-semrush-saml-verification",
+      "service": "Semrush",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^semrush\\-saml\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-sonatype-verification",
+      "service": "Sonatype",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^sonatype\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-successfactors-site-verification",
+      "service": "SAP SuccessFactors",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^successfactors\\-site\\-verification=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-swisssign-check",
+      "service": "SwissSign",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^swisssign\\-check=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-validity-domain-monitoring",
+      "service": "Validity domain monitoring",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^validity\\-domain\\-monitoring=[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-pardot-account-verification",
+      "service": "Salesforce Account Engagement / Pardot",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^pardot(?:[0-9]+|_[0-9]+_\\*)=[a-f0-9]{32,64}$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-vmware-cloud-verification",
+      "service": "VMware Cloud",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^vmware-cloud-verification-[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-ahrefs-site-verification",
+      "service": "Ahrefs",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^ahrefs-site-verification_[a-f0-9]{64}$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-applause-colon",
+      "service": "Applause",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^applause-verification:[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-zoom-spaced",
+      "service": "Zoom",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^zoom-domain-verification\\s+=\\s*[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-sendinblue-legacy",
+      "service": "Brevo",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "pattern": "^sendinblue-code:[^\\s]+$",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Reviewed explicit branded marker; vendor attribution is inferred. Exact marker not independently documented; active use and narrower products are not established.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-hubspot",
+      "service": "HubSpot email",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "hubspotemail.net"
+      ],
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [
+        "https://knowledge.hubspot.com/marketing-email/troubleshoot-email-authentication-issues"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-atlassian",
+      "service": "Atlassian",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "_spf.atlassian.net"
+      ],
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [
+        "https://support.atlassian.com/jira/kb/why-dns-checker-for-setting-up-custom-domain-email-address-still-unverified-in-cloud/"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-rackspace",
+      "service": "Rackspace Email",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "emailsrvr.com"
+      ],
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [
+        "https://docs.rackspace.com/docs/create-an-spf-policy"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-campaign-monitor",
+      "service": "Campaign Monitor",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "_spf.createsend.com"
+      ],
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [
+        "https://help.campaignmonitor.com/articles/Knowledge/allowlist-campaign-monitors-addresses"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-mailjet",
+      "service": "Mailjet",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "spf.mailjet.com"
+      ],
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [
+        "https://documentation.mailjet.com/hc/en-us/articles/360049641733-Authenticating-Domains-with-SPF-and-DKIM-A-Complete-Guide"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-postmark",
+      "service": "Postmark",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "spf.mtasv.net"
+      ],
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [
+        "https://postmarkapp.com/support/article/what-is-spf-and-why-is-it-important"
+      ]
+    },
+    {
+      "id": "spf-valimail",
+      "service": "Valimail",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "vali.email"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-salesforce-exacttarget",
+      "service": "Salesforce Marketing Cloud",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "cust-spf.exacttarget.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-intacct",
+      "service": "Sage Intacct",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "_spf.intacct.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-docebo",
+      "service": "Docebo",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "docebosaas.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-getresponse",
+      "service": "GetResponse",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "_spf.getresponse.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-sparkpost",
+      "service": "SparkPost",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "_spf.e.sparkpost.com",
+        "_spf.sparkpostmail.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-freshsales",
+      "service": "Freshsales",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "_spf.freshsales.io"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-helpscout",
+      "service": "Help Scout",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "helpscoutemail.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-oracle-email",
+      "service": "Oracle Cloud email delivery",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "rp.oracleemaildelivery.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-agari",
+      "service": "Agari",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "spf-protect.agari.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-zoho",
+      "service": "Zoho email",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "spf.zoho.com",
+        "spf.zohomail.com",
+        "popspf.zohomail.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-qualtrics-alternate",
+      "service": "Qualtrics",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "_spf.qualtrics.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-knowbe4",
+      "service": "KnowBe4",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "_spf.psm.knowbe4.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-mimecast",
+      "service": "Mimecast",
+      "category": "email",
+      "kind": "spf_domain",
+      "domains": [
+        "_netblocks.mimecast.com"
+      ],
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Provider reference in positive SPF include/redirect. It does not prove a valid SPF policy or current sending. Macro references are attributed by a literal provider suffix, never expanded.",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-flexera-verification",
+      "service": "Flexera",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Exact marker/reference supported by vendor documentation. Does not establish active usage.",
+      "pattern": "^flexera-domain-verification-[a-z0-9]+$",
+      "sources": [
+        "https://community.flexera.com/s/article/okta-400-login-failed-error-during-single-sign-on-sso"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-linkedin-verification",
+      "service": "LinkedIn",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Exact marker/reference supported by vendor documentation. Does not establish active usage.",
+      "pattern": "^linkedin-site-verification=[^\\s]+$",
+      "sources": [
+        "https://www.linkedin.com/help/linkedin/answer/a8604084"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-infor-cloudsuite",
+      "service": "Infor CloudSuite",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Exact marker/reference supported by vendor documentation. Does not establish active usage.",
+      "pattern": "^infor-cloudsuite-domain-verification=[^\\s]+$",
+      "sources": [
+        "https://docs.infor.com/ssp/2026.10/en-us/cssplib/self_service_portal/qfw1698224295515.html"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-quovadis",
+      "service": "QuoVadis",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Exact marker/reference supported by vendor documentation. Does not establish active usage.",
+      "pattern": "^QuoVadis=[a-f0-9-]+$",
+      "sources": [
+        "https://knowledge.digicert.com/quovadis/ssl-certificates/ssl-general-topics/domain-validation-using-dns-change"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-emma-verification",
+      "service": "Emma",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Exact marker/reference supported by vendor documentation. Does not establish active usage.",
+      "pattern": "^e2ma-verification=[a-z0-9]+$",
+      "sources": [
+        "https://support.myemma.com/s/article/DomainKeys-Identified-Mail-DKIM"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-intacct-esk",
+      "service": "Sage Intacct",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Exact marker/reference supported by vendor documentation. Does not establish active usage.",
+      "pattern": "^intacct-esk=[^\\s]+$",
+      "sources": [
+        "https://www.intacct.com/ia/docs/en_US/help_action/Company/Company_setup/Company_Information/Security/company-DKIM-email-sender-domain-settings.htm"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-poppulo-domain-verification",
+      "service": "Poppulo",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^poppulo\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-safebreach-domain-verification",
+      "service": "SafeBreach",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^safebreach\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-zywave-domain-verification",
+      "service": "Zywave",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^zywave\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-axway-amplify",
+      "service": "Axway Amplify",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^axway\\-amplify=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-gitpod-verification",
+      "service": "Gitpod",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^gitpod\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-nitro-verification-code",
+      "service": "Nitro",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^nitro\\-verification\\-code=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-new-relic-domain-verification",
+      "service": "New Relic",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^new\\-relic\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-barco-verification",
+      "service": "Barco",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^barco\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-bill-one-domain-verification",
+      "service": "Bill One",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^bill\\-one\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-confluent-verification",
+      "service": "Confluent",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^confluent\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-insomnia-validation",
+      "service": "Kong Insomnia",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^insomnia\\-validation=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-meta-work-account-domain-verification",
+      "service": "Meta work accounts",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^meta\\-work\\-account\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-nearmap-domain-verification",
+      "service": "Nearmap",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^nearmap\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-pdq-domain-verification",
+      "service": "PDQ",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^pdq\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-prowly-verification",
+      "service": "Prowly",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^prowly\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-spacelift-domain-verification",
+      "service": "Spacelift",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^spacelift\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-validity-domain-verification",
+      "service": "Validity",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^validity\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-zenqms-domain-verification",
+      "service": "ZenQMS",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^zenqms\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-abuseipdb-verification",
+      "service": "AbuseIPDB",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^abuseipdb\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-activeprospect-domain-verification",
+      "service": "ActiveProspect",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^activeprospect\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-apperio-domain-verification",
+      "service": "Apperio",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^apperio\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-auth0-domain-verification",
+      "service": "Auth0",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^auth0\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-bird-domain-verification",
+      "service": "Bird",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^bird\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-bugfender-saml-delegation",
+      "service": "Bugfender",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^bugfender\\-saml\\-delegation=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-cisco-ci-domainverification",
+      "service": "Cisco identity",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^cisco\\-ci\\-domainverification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-clicksign-domain-verification",
+      "service": "Clicksign",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^clicksign\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-configcat-domain-verification",
+      "service": "ConfigCat",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^configcat\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-contractworksverify",
+      "service": "ContractWorks",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^contractworksverify=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-factorial-domain-verification",
+      "service": "Factorial",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^factorial\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-flippingbook-verification",
+      "service": "FlippingBook",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^flippingbook\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-formstack-domain-verification",
+      "service": "Formstack",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^formstack\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-godaddyverification",
+      "service": "GoDaddy",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^godaddyverification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-island-verification",
+      "service": "Island",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^island\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-kayak-domain-verification",
+      "service": "KAYAK",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^kayak\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-mailerlite-domain-verification",
+      "service": "MailerLite",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^mailerlite\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-make-domain-verification",
+      "service": "Make",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^make\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-mistral-domain-verification",
+      "service": "Mistral AI",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^mistral\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-pandadoc-domain-verification",
+      "service": "PandaDoc",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^pandadoc\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-prodpad-domain-verification",
+      "service": "ProdPad",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^prodpad\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-read-ai-verification",
+      "service": "Read AI",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^read\\-ai\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-resend-domain-verification",
+      "service": "Resend",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^resend\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-securiti-verification-id",
+      "service": "Securiti",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^securiti\\-verification\\-id=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-sendinblue-site-verification",
+      "service": "Brevo",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^sendinblue\\-site\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-sign-in-app-verification",
+      "service": "Sign In App",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^sign\\-in\\-app\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-slido-domain-verification",
+      "service": "Slido",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^slido\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-smartfense-domain-verification",
+      "service": "Smartfense",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^smartfense\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-starlink-domain-verification",
+      "service": "Starlink",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^starlink\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-teamtailor",
+      "service": "Teamtailor",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^teamtailor=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-tiktok-verification",
+      "service": "TikTok",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^tiktok\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-tipalti-domain-verification",
+      "service": "Tipalti",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^tipalti\\-domain\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-tresorit-verification",
+      "service": "Tresorit",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^tresorit\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-wombat-verification",
+      "service": "Wombat Security",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^wombat\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-xmedius-verification",
+      "service": "XMedius",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^xmedius\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-xtensio-site-verification",
+      "service": "Xtensio",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^xtensio\\-site\\-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-zscaler-verification",
+      "service": "Zscaler",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^zscaler-verification-[a-z0-9-]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-omnissa-connect",
+      "service": "Omnissa Connect",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^omnissa-connect-verification-[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-quickbase-verification",
+      "service": "Quickbase",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^quickbase-site-verification-[a-f0-9]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-identrust-validation",
+      "service": "IdenTrust",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^identrust_validate=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-geneious",
+      "service": "Geneious",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^(?:www\\.)?geneious\\.com:domain-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-graphpad",
+      "service": "GraphPad",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^(?:www\\.)?graphpad\\.com:domain-verification=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-d-trust",
+      "service": "D-Trust",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^D-TRUST=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-thousandeyes",
+      "service": "Cisco ThousandEyes",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^thousandeyes:[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-ibmid-spaced",
+      "service": "IBM identity",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^ibmid=\\s+[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-mailjet-verification",
+      "service": "Mailjet",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^mailjet\\._[a-f0-9]+=[a-f0-9]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-zoho-campaigns-verification",
+      "service": "Zoho domain verification",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "The marker and zcverify.zoho.com hostname identify Zoho. The specific Zoho product has not been established; do not infer Campaigns from the abbreviation zc. Matching behavior is unchanged.",
+      "pattern": "^zoho-verification=zc[0-9]+\\.zcverify\\.zoho\\.com$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-braintrust",
+      "service": "Braintrust",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^braintrust-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-carta",
+      "service": "Carta",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^carta-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-exa",
+      "service": "Exa",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^exa-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-live-kit",
+      "service": "LiveKit",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^live\\-kit-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-liveblocks",
+      "service": "Liveblocks",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^liveblocks-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-llama-index",
+      "service": "LlamaIndex",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^llama\\-index-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-turbopuffer",
+      "service": "Turbopuffer",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^turbopuffer-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-workbrew",
+      "service": "Workbrew",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^workbrew-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "txt-witness-ai",
+      "service": "WitnessAI",
+      "category": "domain verification",
+      "kind": "txt_regex",
+      "confidence": "medium",
+      "basis": "observed_branded_marker",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "pattern": "^witness\\-ai-domain-verification-[a-z0-9]+=[^\\s]+$",
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-cloudflare-email",
+      "service": "Cloudflare Email Service",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Exact marker/reference supported by vendor documentation. Does not establish active usage.",
+      "domains": [
+        "_spf.mx.cloudflare.net"
+      ],
+      "sources": [
+        "https://developers.cloudflare.com/email-service/reference/postmaster/"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-mailersend",
+      "service": "MailerSend",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Exact marker/reference supported by vendor documentation. Does not establish active usage.",
+      "domains": [
+        "_spf.mailersend.net"
+      ],
+      "sources": [
+        "https://www.mailersend.com/help/how-to-merge-spf-records"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-smtp2go",
+      "service": "SMTP2GO",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Exact marker/reference supported by vendor documentation. Does not establish active usage.",
+      "domains": [
+        "spf.smtp2go.com"
+      ],
+      "sources": [
+        "https://support.smtp2go.com/hc/en-gb/articles/223087327-Allow-List-IP-Addresses-With-Your-Incoming-MX-Server"
+      ],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-odoo",
+      "service": "Odoo",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Exact marker/reference supported by vendor documentation. Does not establish active usage.",
+      "domains": [
+        "_spf.odoo.com"
+      ],
+      "sources": [
+        "https://www.odoo.com/documentation/16.0/applications/general/email_communication/email_domain.html"
+      ]
+    },
+    {
+      "id": "spf-elastic-email",
+      "service": "Elastic Email",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "high",
+      "basis": "vendor_documentation",
+      "notes": "Exact marker/reference supported by vendor documentation. Does not establish active usage.",
+      "domains": [
+        "_spf.elasticemail.com"
+      ],
+      "sources": [
+        "https://help.elasticemail.com/en/articles/4934400-how-to-verify-your-domain"
+      ]
+    },
+    {
+      "id": "spf-eloqua",
+      "service": "Oracle Eloqua",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "_netblocks.eloqua.com"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-successfactors",
+      "service": "SAP SuccessFactors",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "sapsf.com",
+        "sapsf.eu",
+        "successfactors.com"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-netskope",
+      "service": "Netskope",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "_spf.goskope.com"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-everbridge",
+      "service": "Everbridge",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "everbridge.net"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-mailerlite",
+      "service": "MailerLite",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "_spf.mailerlite.io",
+        "_spf.mlsend.com"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-intercom",
+      "service": "Intercom",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "intercom.com",
+        "intercom.io"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-emma",
+      "service": "Emma",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "e2ma.net"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-crisp",
+      "service": "Crisp",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "_spf.crisp.chat"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-easydmarc",
+      "service": "EasyDMARC",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "easydmarc.pro"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-messagegears",
+      "service": "MessageGears",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "_spf.messagegears.net"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-sendpulse",
+      "service": "SendPulse",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "mxsmtp.sendpulse.com",
+        "mxsspf.sendpulse.com"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-netsuite",
+      "service": "Oracle NetSuite",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "sent-via.netsuite.com"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-tawk",
+      "service": "tawk.to",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "mta.tawk.to"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-uservoice",
+      "service": "UserVoice",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "smtp1.uservoice.com"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-woodpecker",
+      "service": "Woodpecker",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "spf.woodpecker.co"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-workfront",
+      "service": "Adobe Workfront",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "spf.workfront.com"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-trendmicro-email",
+      "service": "Trend Micro Email Security",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "spf-us.tmes.trendmicro.com"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-masterbase",
+      "service": "MasterBase",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "spf.masterbase.com"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-mailchimp-transactional-alternate",
+      "service": "Mailchimp Transactional / Mandrill",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "mandrillapp.com"
+      ],
+      "domains_exact": true,
+      "sources": [],
+      "observation_sources_withheld": true
+    },
+    {
+      "id": "spf-pardot-alternate",
+      "service": "Salesforce Account Engagement / Pardot",
+      "category": "email",
+      "kind": "spf_domain",
+      "confidence": "medium",
+      "basis": "observed_vendor_domain",
+      "notes": "Explicit branded marker/provider reference reviewed from DNS; attribution is inferred and not independently documented. Does not establish active use or a narrower product.",
+      "domains": [
+        "et._spf.pardot.com"
+      ],
+      "sources": [],
+      "observation_sources_withheld": true
+    }
+  ]
+}

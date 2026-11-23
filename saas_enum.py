@@ -1,3 +1,11 @@
+import sys
+
+# TXT mode is independent of the optional dependencies used by legacy web checks.
+if __name__ == "__main__" and "--txt" in sys.argv[1:]:
+    from txt_enum import main as txt_main
+
+    raise SystemExit(txt_main([arg for arg in sys.argv[1:] if arg != "--txt"]))
+
 import concurrent.futures
 import argparse
 import os
@@ -324,7 +332,8 @@ def run_checks(
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Enhanced SaaS Provider Detection Tool"
+        description="Enhanced SaaS Provider Detection Tool",
+        epilog="TXT-only mode: python saas_enum.py --txt --domain example.com (or --txt --help)",
     )
     parser.add_argument("-i", "--input", help="SHORT_NAME to use in lookup")
     parser.add_argument(
